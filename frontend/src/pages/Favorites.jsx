@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { supabase } from '../lib/supabase';
 
 const API = import.meta.env.VITE_API_URL;
 
 export default function Favorites() {
-  const { user } = useAuth();
-  const [favorites, setFavorites] = useState([]);
-  const [loading, setLoading]     = useState(true);
+  const { user }                      = useAuth();
+  const [favorites, setFavorites]     = useState([]);
+  const [loading, setLoading]         = useState(true);
 
   useEffect(() => {
     if (!user) return;
